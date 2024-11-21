@@ -17,7 +17,7 @@ type User struct {
 	CreatedAt time.Time `json:"createdAt"`
 }
 
-type ResisterUserPayload struct {
+type RegisterUserPayload struct {
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
 	Email     string `json:"email"`

@@ -20,7 +20,7 @@ func NewHandler(store types.UserStore) *Handler {
 
 func (h *Handler) ResisterRoutes(router *mux.Router) {
 	router.HandleFunc("/login", h.handleLogin).Methods("POST")
-	router.HandleFunc("/resister", h.handleLogin).Methods("POST")
+	router.HandleFunc("/resister", h.handleRegister).Methods("POST")
 
 }
 
@@ -29,8 +29,8 @@ func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
-	var payload types.ResisterUserPayload
-	err := utils.ParseJSON(r, payload);
+	var payload types.RegisterUserPayload
+	err := utils.ParseJSON(r, &payload);
 	if err != nil {
 		utils.WriteError(w, http.StatusBadRequest, err)
 	}
