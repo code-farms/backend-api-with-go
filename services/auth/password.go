@@ -17,3 +17,11 @@ func HashPassword(password string) (string, error) {
 	// Step 3: Return the hashed password as a string (since `GenerateFromPassword` returns a byte slice)
 	return string(hash), nil  // Return the hashed password as a string and nil error on success
 }
+
+func ComparePasswords(hashed string, plain []byte) (bool) {
+	// Step 1: Compare the hashed password with the plain-text password
+	err := bcrypt.CompareHashAndPassword([]byte(hashed), plain)
+
+	// Step 2: If there is no error, it means the passwords match
+	return err == nil  // Return true if the passwords match, false otherwise
+}

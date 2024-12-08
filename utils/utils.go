@@ -4,7 +4,11 @@ import (
 	"encoding/json" // For encoding and decoding JSON data
 	"fmt"           // For formatted I/O operations
 	"net/http"      // For HTTP request and response handling
+
+	"github.com/go-playground/validator/v10" // For data validation
 )
+
+var Validate = validator.New()
 
 // ParseJSON decodes a JSON-encoded request body into the given payload.
 // It reads from the HTTP request body and populates the provided `payload`.
